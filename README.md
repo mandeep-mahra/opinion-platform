@@ -29,17 +29,16 @@ Let's Vote is an interactive online platform, akin to Facebook, where users can:
 ## Getting Started
 
 1. **Clone the repository:**
-   ```bash
+   ```
    git clone https://github.com/your-username/lets-vote.git
-
+   ```
 
 Install dependencies:
 
-bash
-Copy code
+```
 cd lets-vote
 npm install
-
+```
 
 Set up Firebase:
 
@@ -48,10 +47,9 @@ Enable required services (Authentication, Realtime Database, or Cloud Firestore)
 Initialize Firebase in your application using the provided configuration.
 Run the application:
 
-bash
-Copy code
+```
 npm start
-
+```
 
 Project Structure
 ```

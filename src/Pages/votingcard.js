@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Card, Form, Row, Col } from 'react-bootstrap';
 import { votedFor, updateData, getVoteCount } from '../firebase';
 import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer } from 'recharts';
-
+import "../resources/homePage.css";
 
 export default function VotingCard({  heading, uploader, options, id, email }) {
   const [realOptions, setRealOptions] = useState([]);
@@ -72,39 +72,39 @@ export default function VotingCard({  heading, uploader, options, id, email }) {
   },[selOption])
 
   return (
-    <Card className="p-3 container-sm voting-card mb-5 w-50 h-100 d-flex align-items-center justify-content-center">
-      <Card.Body>
-        <Card.Header><h4>{uploader + " posted..."}</h4></Card.Header>
-        <Card.Title className = "p-3 mt-3"><h4>{heading}</h4></Card.Title>
-        <Form className = "mt-3 p-3">
-          <Row className = "w-100 p-3">
-            {realOptions.map((option, index) => (
-              <Col key={index} md={9} className="mb-3 p-3">
-                  <Form.Check
-                    type="radio"
-                    id={option.title + index}
-                    label={
-                      <>
-                        <img
-                          src={option.image}
-                          alt={option.title}
-                          height = "175vw"
-                          className="option-image ms-2"
-                        />
-                        <br></br>
-                        <h4>{option.title}</h4>
-                      </>
-                    }
-                    value={option.title}
-                    checked={(selectedOption === option.title) || 
-                             (option.title === votedForOption)}
-                    onChange={() => handleVote(option.title)}
-                  />
+    <Card className="container-sm voting-card mb-5 w-50 h-100 d-flex align-items-center justify-content-center">
+      <Card.Body className='w-100'>
+        <Card.Header className='small'>{uploader + " posted..."}</Card.Header>
+        <Card.Title className = "p-3 mt-3">{heading}</Card.Title>
+
+          <div className = "row p-3">
+              {realOptions.map((option, index) => (
+                    <Form.Check
+                      className='option'
+                      type="radio"
+                      id={option.title + index}
+                      label={
+                        <>
+                          <img
+                            src={option.image}
+                            alt={option.title}
+                            height = "175vw"
+                            className="option-image ms-2"
+                          />
+                          <br></br>
+                          <span className='small'>{option.title}</span>
+                        </>
+                      }
+                      value={option.title}
+                      checked={(selectedOption === option.title) || 
+                              (option.title === votedForOption)}
+                      onChange={() => handleVote(option.title)}
+                    />
+                  
                 
-              </Col>
-            ))}
-          </Row>
-        </Form>
+              ))}
+          </div>
+        
         <Card.Footer>
           {selectedOption && <p>You voted for: {selectedOption}</p>}
           {(data.length > 0) ? 

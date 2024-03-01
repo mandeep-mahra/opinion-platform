@@ -1,0 +1,16 @@
+.small {
+    font-size: 2vh;
+}
+.option-image{
+    max-width: 20vh;
+    max-height: 20vh;
+}
+.option{
+    width:fit-content;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap : 5vh;
+}
